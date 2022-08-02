@@ -430,6 +430,7 @@ In principle tiller can be installed using `helm init`.
 
 ```
 $ curl -s https://storage.googleapis.com/kubernetes-helm/helm-v2.16.1-linux-amd64.tar.gz | tar xz
+$ curl -s https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz | tar xz ## 이걸로 
 
 $ cd linux-amd64
 $ sudo mv helm /bin
