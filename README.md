@@ -429,7 +429,7 @@ Since Helm charts that we are going to use still However, we will be installing 
 In principle tiller can be installed using `helm init`.
 
 ```
-$ curl -s https://storage.googleapis.com/kubernetes-helm/helm-v2.16.1-linux-amd64.tar.gz | tar xz
+######$ curl -s https://storage.googleapis.com/kubernetes-helm/helm-v2.16.1-linux-amd64.tar.gz | tar xz
 $ curl -s https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz | tar xz ## 이걸로 
 
 $ cd linux-amd64
@@ -451,7 +451,9 @@ Helm can be installed with and without security. If no security is required (lik
 Initialize the `helm` and it will install `tiller` server in Kubernetes.
 
 ```
-$ helm init --service-account tiller
+#######3$ helm init --service-account tiller
+#######아래 것으로 진행
+helm init --service-account tiller --override spec.selector.matchLabels.'name'='tiller',spec.selector.matchLabels.'app'='helm' --output yaml | sed 's@apiVersion: extensions/v1beta1@apiVersion: apps/v1@' | kubectl apply -f -
 ```
 
 Wait for tiller to get deployed. (check `kubectl get pods -A`)
